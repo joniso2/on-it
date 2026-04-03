@@ -1,19 +1,20 @@
 <div align="center">
-  <img src="public/onit-logo.svg" alt="ON-IT Logo" width="80" />
-  <h1>ON-IT</h1>
-  <p><strong>Operational Incident & Workforce Management System</strong></p>
-  <p>
-    Real-time ticket lifecycle management, workforce attendance tracking, and operational reporting — built for Hebrew-speaking, mobile-first teams.
-  </p>
-  <p>
-    <img alt="Next.js 16" src="https://img.shields.io/badge/Next.js-16-black?logo=next.js" />
-    <img alt="React 19" src="https://img.shields.io/badge/React-19-61DAFB?logo=react&logoColor=black" />
-    <img alt="TypeScript 5" src="https://img.shields.io/badge/TypeScript-5-3178C6?logo=typescript&logoColor=white" />
-    <img alt="PostgreSQL" src="https://img.shields.io/badge/PostgreSQL-Supabase-336791?logo=postgresql&logoColor=white" />
-    <img alt="Vercel" src="https://img.shields.io/badge/Deployed-Vercel-black?logo=vercel" />
-  </p>
-</div>
 
+# ON-IT
+
+### 🚀 Operational Incident & Workforce Management System
+
+Real-time ticket lifecycle, workforce tracking, and automation for high-performance teams
+
+<br/>
+
+<img src="https://img.shields.io/badge/Next.js-16-black?logo=next.js" />
+<img src="https://img.shields.io/badge/React-19-61DAFB?logo=react&logoColor=black" />
+<img src="https://img.shields.io/badge/TypeScript-5-3178C6?logo=typescript" />
+<img src="https://img.shields.io/badge/PostgreSQL-Supabase-336791?logo=postgresql" />
+<img src="https://img.shields.io/badge/Deployed-Vercel-black?logo=vercel" />
+
+</div>
 ---
 
 ## Overview
