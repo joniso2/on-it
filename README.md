@@ -29,18 +29,6 @@
 
 <br />
 
-## 📊 System Stats
-
-| Metric | Value |
-|:---|:---:|
-| Database Tables | **16** |
-| Indexes | **47+** |
-| Permissions | **37** |
-| Roles | **11** |
-| Notification Types | **7** |
-| Report Views | **10** |
-| Escalation Engines | **2** |
-
 ---
 
 ## 📋 Overview
@@ -406,6 +394,20 @@ The system serves organizations running customer service and technical support o
 | 📱 | **PWA** | Standalone mobile display, RTL orientation |
 
 </div>
+
+---
+
+## 📊 By the Numbers
+
+| Metric | Value |
+|:---|:---:|
+| Database Tables | **16** |
+| Indexes | **47+** |
+| Permissions | **37** |
+| Roles | **11** |
+| Notification Types | **7** |
+| Report Views | **10** |
+| Escalation Engines | **2** |
 
 ---
 
