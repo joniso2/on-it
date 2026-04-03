@@ -54,6 +54,65 @@ The system serves organizations running customer service and technical support o
 
 ---
 
+## 🎬 Demo & Screenshots
+
+<div align="center">
+
+<!-- 
+  🎥 VIDEO: Replace the link below with your video URL.
+  Supported: YouTube, Loom, or a direct .mp4 file.
+-->
+
+<a href="https://www.youtube.com/watch?v=REPLACE_WITH_VIDEO_ID">
+  <img src="https://img.shields.io/badge/▶%20Watch%20Demo-FF0000?style=for-the-badge&logo=youtube&logoColor=white" height="40" />
+</a>
+
+<br /><br />
+
+<!-- 
+  📸 SCREENSHOTS: Replace the src values below with your actual screenshot paths or URLs.
+  
+  To add images easily:
+  1. Go to your GitHub repo → Issues → New Issue
+  2. Drag & drop your screenshots into the text box
+  3. GitHub generates a URL like: https://github.com/user-attachments/assets/...
+  4. Copy that URL and paste it into the src="" below
+  5. You can close the issue without submitting
+-->
+
+<table>
+  <tr>
+    <td align="center" width="50%">
+      <strong>📋 Ticket Dashboard</strong>
+      <br /><br />
+      <img src="https://placehold.co/600x400/1a1a2e/ffffff?text=Ticket+Dashboard" width="100%" alt="Ticket Dashboard" />
+    </td>
+    <td align="center" width="50%">
+      <strong>🎫 Ticket Details & Timeline</strong>
+      <br /><br />
+      <img src="https://placehold.co/600x400/16213e/ffffff?text=Ticket+Details" width="100%" alt="Ticket Details" />
+    </td>
+  </tr>
+  <tr>
+    <td align="center" width="50%">
+      <strong>👥 Attendance Tracking</strong>
+      <br /><br />
+      <img src="https://placehold.co/600x400/0f3460/ffffff?text=Attendance+View" width="100%" alt="Attendance Tracking" />
+    </td>
+    <td align="center" width="50%">
+      <strong>📊 Reports & Analytics</strong>
+      <br /><br />
+      <img src="https://placehold.co/600x400/533483/ffffff?text=Reports+%26+Analytics" width="100%" alt="Reports" />
+    </td>
+  </tr>
+</table>
+
+<sub>📌 Screenshots are placeholders — replace with actual project images using the instructions in the HTML comments above.</sub>
+
+</div>
+
+---
+
 ## ✨ Core Features
 
 <table>
