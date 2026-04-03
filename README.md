@@ -2,7 +2,7 @@
 
   <h1>🚀 ON-IT</h1>
 
-  <h3>Operational Incident & Workforce Management System</h3>
+  <h3>Operational Management SaaS for Real-Time Ticketing, Workforce Tracking & Automation</h3>
 
   <p>
     <strong>Real-time ticket lifecycle · SLA enforcement · Automated escalation · Workforce tracking</strong>
@@ -29,18 +29,17 @@
 
 <br />
 
-<div align="center">
-  <table>
-    <tr>
-      <td align="center" width="140"><strong>16</strong><br /><sub>DB Tables</sub></td>
-      <td align="center" width="140"><strong>47+</strong><br /><sub>Indexes</sub></td>
-      <td align="center" width="140"><strong>37</strong><br /><sub>Permissions</sub></td>
-      <td align="center" width="140"><strong>11</strong><br /><sub>Roles</sub></td>
-      <td align="center" width="140"><strong>10</strong><br /><sub>Report Views</sub></td>
-      <td align="center" width="140"><strong>2</strong><br /><sub>Escalation Engines</sub></td>
-    </tr>
-  </table>
-</div>
+## 📊 System Stats
+
+| Metric | Value |
+|:---|:---:|
+| Database Tables | **16** |
+| Indexes | **47+** |
+| Permissions | **37** |
+| Roles | **11** |
+| Notification Types | **7** |
+| Report Views | **10** |
+| Escalation Engines | **2** |
 
 ---
 
@@ -215,55 +214,33 @@ The system serves organizations running customer service and technical support o
 
 ## 🛠️ Tech Stack
 
-<div align="center">
-
-  <img src="https://img.shields.io/badge/Next.js_16-App_Router-000000?style=for-the-badge&logo=next.js&logoColor=white" />
-  <img src="https://img.shields.io/badge/React_19-+_Compiler-61DAFB?style=for-the-badge&logo=react&logoColor=black" />
-  <img src="https://img.shields.io/badge/TypeScript_5-Strict-3178C6?style=for-the-badge&logo=typescript&logoColor=white" />
-
-  <br />
-
-  <img src="https://img.shields.io/badge/PostgreSQL-Supabase-4169E1?style=for-the-badge&logo=supabase&logoColor=white" />
-  <img src="https://img.shields.io/badge/Drizzle-ORM-C5F74F?style=for-the-badge&logo=drizzle&logoColor=black" />
-  <img src="https://img.shields.io/badge/Tailwind_CSS_4-Styling-06B6D4?style=for-the-badge&logo=tailwindcss&logoColor=white" />
-
-  <br />
-
-  <img src="https://img.shields.io/badge/Twilio-WhatsApp-F22F46?style=for-the-badge&logo=twilio&logoColor=white" />
-  <img src="https://img.shields.io/badge/Puppeteer-PDF-40B5A4?style=for-the-badge&logo=puppeteer&logoColor=white" />
-  <img src="https://img.shields.io/badge/Zod_4-Validation-3E67B1?style=for-the-badge&logo=zod&logoColor=white" />
-
-  <br />
-
-  <img src="https://img.shields.io/badge/Playwright-E2E_Testing-2EAD33?style=for-the-badge&logo=playwright&logoColor=white" />
-  <img src="https://img.shields.io/badge/Vercel-Serverless+Cron-000000?style=for-the-badge&logo=vercel&logoColor=white" />
-  <img src="https://img.shields.io/badge/shadcn/ui-Components-000000?style=for-the-badge&logo=shadcnui&logoColor=white" />
-
-</div>
-
-<br />
-
-<details>
-<summary><strong>Full stack breakdown</strong></summary>
-
-<br />
-
 | Layer | Technology |
 |:---|:---|
-| **Framework** | Next.js 16 — App Router, Server Components, Server Actions |
-| **UI** | React 19 with React Compiler for automatic memoization |
-| **Language** | TypeScript 5 in strict mode |
-| **Database** | PostgreSQL on Supabase with Drizzle ORM |
-| **Styling** | Tailwind CSS 4, shadcn/ui component library |
-| **Validation** | Zod 4 runtime schema validation |
+| **Frontend** | Next.js 16 (App Router, Server Components), React 19 + React Compiler |
+| **Language** | TypeScript 5 (strict mode) |
+| **Backend** | Server Actions, Next.js Middleware, Vercel Cron |
+| **Database** | PostgreSQL (Supabase) + Drizzle ORM |
+| **Styling** | Tailwind CSS 4, shadcn/ui |
+| **Validation** | Zod 4 |
 | **Notifications** | Twilio (WhatsApp), Nodemailer (email) |
-| **PDF** | Puppeteer with custom RTL Hebrew templates |
-| **Excel** | SheetJS — multi-sheet workbooks |
-| **Charts** | Recharts — RTL-compatible data visualization |
-| **Testing** | Playwright end-to-end tests |
-| **Deployment** | Vercel serverless functions + edge middleware + cron |
+| **Reporting** | Puppeteer (PDF), SheetJS (Excel), Recharts (charts) |
+| **Testing** | Playwright (E2E) |
+| **Deployment** | Vercel — serverless functions + edge middleware + cron |
 
-</details>
+<div align="center">
+
+  <br />
+
+  <img src="https://img.shields.io/badge/Next.js_16-000000?style=for-the-badge&logo=next.js&logoColor=white" />
+  <img src="https://img.shields.io/badge/React_19-61DAFB?style=for-the-badge&logo=react&logoColor=black" />
+  <img src="https://img.shields.io/badge/TypeScript_5-3178C6?style=for-the-badge&logo=typescript&logoColor=white" />
+  <img src="https://img.shields.io/badge/PostgreSQL-4169E1?style=for-the-badge&logo=supabase&logoColor=white" />
+  <img src="https://img.shields.io/badge/Drizzle-C5F74F?style=for-the-badge&logo=drizzle&logoColor=black" />
+  <img src="https://img.shields.io/badge/Tailwind_CSS-06B6D4?style=for-the-badge&logo=tailwindcss&logoColor=white" />
+  <img src="https://img.shields.io/badge/Twilio-F22F46?style=for-the-badge&logo=twilio&logoColor=white" />
+  <img src="https://img.shields.io/badge/Vercel-000000?style=for-the-badge&logo=vercel&logoColor=white" />
+
+</div>
 
 ---
 
@@ -434,21 +411,10 @@ The system serves organizations running customer service and technical support o
 
 <div align="center">
 
-  <img src="https://img.shields.io/badge/tables-16-4169E1?style=for-the-badge" />
-  <img src="https://img.shields.io/badge/indexes-47+-336791?style=for-the-badge" />
-  <img src="https://img.shields.io/badge/permissions-37-2EAD33?style=for-the-badge" />
-  <img src="https://img.shields.io/badge/roles-11-F59E0B?style=for-the-badge" />
-  <img src="https://img.shields.io/badge/notifications-7_types-F22F46?style=for-the-badge" />
-  <img src="https://img.shields.io/badge/reports-10_views-8B5CF6?style=for-the-badge" />
-  <img src="https://img.shields.io/badge/escalation-2_engines-EF4444?style=for-the-badge" />
-
-  <br /><br />
-
   > **🔒 This repository is private.** Source code access is available upon request for authorized review.
 
   <br />
 
   Built with ❤️ for high-performance operations teams
-
 
 </div>
