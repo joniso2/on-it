@@ -57,48 +57,34 @@ The system serves organizations running customer service and technical support o
 ## 🎬 Screenshots
 
 <div align="center">
-
-<!-- To add a video demo later, uncomment and replace the URL:
-<a href="https://www.youtube.com/watch?v=YOUR_VIDEO_ID">
-  <img src="https://img.shields.io/badge/▶%20Watch%20Demo-FF0000?style=for-the-badge&logo=youtube&logoColor=white" height="40" />
-</a>
-<br /><br />
--->
-
 <table>
   <tr>
-    <td align="center" width="50%">
-      <strong>🔐 Login</strong>
+    <td align="center" colspan="2">
+      <strong>🏠 Admin Dashboard — 9 modules at a glance</strong>
       <br /><br />
-      <img src="./screenshots/login-clean.png" width="100%" alt="Login Page" />
-    </td>
-    <td align="center" width="50%">
-      <strong>🏠 Dashboard</strong>
-      <br /><br />
-      <img src="./screenshots/home.png" width="100%" alt="Dashboard Home" />
+      <img src="https://github.com/user-attachments/assets/79eb0ee5-0501-4831-acaa-c5b136bd84dc" width="80%" alt="Admin Dashboard" />
     </td>
   </tr>
   <tr>
     <td align="center" width="50%">
-      <strong>📋 Ticket Board</strong>
+      <strong>📋 Ticket Board — filters, stats & SLA tracking</strong>
       <br /><br />
-      <img src="./screenshots/tickets.png" width="100%" alt="All Tickets" />
+      <img src="https://github.com/user-attachments/assets/5e9ff995-6051-455a-a647-1a5ca3a13bdd" width="100%" alt="Ticket Board" />
     </td>
     <td align="center" width="50%">
-      <strong>🎫 Ticket Detail & Timeline</strong>
+      <strong>👥 Attendance Management</strong>
       <br /><br />
-      <img src="./screenshots/ticket-detail.png" width="100%" alt="Ticket Detail" />
+      <img src="https://github.com/user-attachments/assets/38c85cf7-3e35-4d3b-9946-03e908143f68" width="100%" alt="Attendance Grid" />
     </td>
   </tr>
   <tr>
     <td align="center" colspan="2">
-      <strong>🔧 Create Ticket</strong>
+      <strong>📊 Reports Hub — PDF & Excel export for 7 report types</strong>
       <br /><br />
-      <img src="./screenshots/new-ticket.png" width="60%" alt="Create Ticket Form" />
+      <img src="https://github.com/user-attachments/assets/42168e0b-b85a-45ec-bf54-d6673c702ea2" width="80%" alt="Reports" />
     </td>
   </tr>
 </table>
-
 </div>
 
 ---
