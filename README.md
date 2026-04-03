@@ -1,6 +1,6 @@
 <div align="center">
 
-  <img src="public/onit-logo.svg" alt="ON-IT" width="120" />
+  <img src="public/onit-logo.png" alt="ON-IT" width="120" />
 
   <br />
 
