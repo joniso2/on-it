@@ -1,22 +1,24 @@
 <div align="center">
 
-  <img src="https://capsule-render.vercel.app/api?type=waving&color=0:0d1117,50:161b22,100:1f6feb&height=220&section=header&text=🚀%20ON-IT&fontSize=60&fontColor=ffffff&fontAlignY=35&desc=Operational%20Incident%20%26%20Workforce%20Management%20System&descSize=18&descAlignY=55&descColor=8b949e&animation=fadeIn" width="100%" />
+  <h1>🚀 ON-IT</h1>
+
+  <h3>Operational Incident & Workforce Management System</h3>
+
+  <p>
+    <strong>Real-time ticket lifecycle · SLA enforcement · Automated escalation · Workforce tracking</strong>
+    <br />
+    Built for Hebrew-speaking, mobile-first operations teams
+  </p>
 
   <br />
 
-  **Real-time ticket lifecycle · SLA enforcement · Automated escalation · Workforce tracking**
+  <a href="#-tech-stack"><img src="https://img.shields.io/badge/Next.js-16-000000?style=for-the-badge&logo=next.js&logoColor=white" /></a>
+  <a href="#-tech-stack"><img src="https://img.shields.io/badge/React-19-61DAFB?style=for-the-badge&logo=react&logoColor=black" /></a>
+  <a href="#-tech-stack"><img src="https://img.shields.io/badge/TypeScript-5-3178C6?style=for-the-badge&logo=typescript&logoColor=white" /></a>
+  <a href="#-tech-stack"><img src="https://img.shields.io/badge/PostgreSQL-Supabase-4169E1?style=for-the-badge&logo=postgresql&logoColor=white" /></a>
+  <a href="#-tech-stack"><img src="https://img.shields.io/badge/Vercel-Deployed-000000?style=for-the-badge&logo=vercel&logoColor=white" /></a>
 
-  **Built for Hebrew-speaking, mobile-first operations teams**
-
-  <br />
-
-  <img src="https://img.shields.io/badge/Next.js-16-000000?style=for-the-badge&logo=next.js&logoColor=white" />
-  <img src="https://img.shields.io/badge/React-19-61DAFB?style=for-the-badge&logo=react&logoColor=black" />
-  <img src="https://img.shields.io/badge/TypeScript-5-3178C6?style=for-the-badge&logo=typescript&logoColor=white" />
-  <img src="https://img.shields.io/badge/PostgreSQL-Supabase-4169E1?style=for-the-badge&logo=postgresql&logoColor=white" />
-  <img src="https://img.shields.io/badge/Vercel-Deployed-000000?style=for-the-badge&logo=vercel&logoColor=white" />
-
-  <br />
+  <br /><br />
 
   <img src="https://img.shields.io/badge/status-pilot%20deployment-brightgreen?style=flat-square" />
   <img src="https://img.shields.io/badge/language-Hebrew%20RTL-blue?style=flat-square" />
@@ -413,8 +415,5 @@ The system serves organizations running customer service and technical support o
 
   Built with ❤️ for high-performance operations teams
 
-  <br /><br />
-
-  <img src="https://capsule-render.vercel.app/api?type=waving&color=0:0d1117,50:161b22,100:1f6feb&height=120&section=footer" width="100%" />
 
 </div>
