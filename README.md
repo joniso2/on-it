@@ -1,16 +1,11 @@
 <div align="center">
 
-  <img src="./public/onit-logo-safe.png" alt="ON-IT" width="120" />
-
-  <br />
-
-  # 🚀 ON-IT
-
-  ### Operational Incident & Workforce Management System
+  <img src="https://capsule-render.vercel.app/api?type=waving&color=0:0d1117,50:161b22,100:1f6feb&height=220&section=header&text=🚀%20ON-IT&fontSize=60&fontColor=ffffff&fontAlignY=35&desc=Operational%20Incident%20%26%20Workforce%20Management%20System&descSize=18&descAlignY=55&descColor=8b949e&animation=fadeIn" width="100%" />
 
   <br />
 
   **Real-time ticket lifecycle · SLA enforcement · Automated escalation · Workforce tracking**
+
   **Built for Hebrew-speaking, mobile-first operations teams**
 
   <br />
@@ -417,5 +412,9 @@ The system serves organizations running customer service and technical support o
   <br />
 
   Built with ❤️ for high-performance operations teams
+
+  <br /><br />
+
+  <img src="https://capsule-render.vercel.app/api?type=waving&color=0:0d1117,50:161b22,100:1f6feb&height=120&section=footer" width="100%" />
 
 </div>
