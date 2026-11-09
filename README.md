@@ -65,26 +65,26 @@ I'm looking for roles as a **SOC Analyst (Tier 1)**, **Security Analyst**, **Jun
     <td align="center" colspan="2">
       <strong>🏠 Admin Dashboard</strong>
       <br /><br />
-      <img src="https://github.com/user-attachments/assets/79eb0ee5-0501-4831-acaa-c5b136bd84dc" width="80%" alt="Admin Dashboard" />
+      <img src="screenshots/dashboard.png" width="80%" alt="Admin Dashboard" />
     </td>
   </tr>
   <tr>
     <td align="center" width="50%">
       <strong>📋 Ticket Board: filters, stats & SLA tracking</strong>
       <br /><br />
-      <img src="https://github.com/user-attachments/assets/5e9ff995-6051-455a-a647-1a5ca3a13bdd" width="100%" alt="Ticket Board" />
+      <img src="screenshots/tickets.png" width="100%" alt="Ticket Board" />
     </td>
     <td align="center" width="50%">
       <strong>👥 Attendance Management</strong>
       <br /><br />
-      <img src="https://github.com/user-attachments/assets/38c85cf7-3e35-4d3b-9946-03e908143f68" width="100%" alt="Attendance Grid" />
+      <img src="screenshots/attendance.png" width="100%" alt="Attendance Grid" />
     </td>
   </tr>
   <tr>
     <td align="center" colspan="2">
       <strong>📊 Reports Hub: PDF, Excel & CSV export</strong>
       <br /><br />
-      <img src="https://github.com/user-attachments/assets/42168e0b-b85a-45ec-bf54-d6673c702ea2" width="80%" alt="Reports" />
+      <img src="screenshots/reports.png" width="80%" alt="Reports" />
     </td>
   </tr>
 </table>
