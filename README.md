@@ -7,7 +7,7 @@
   <p>
     <strong>Incident lifecycle · SLA & escalation · Role-based access control · Audit logging & security alerting</strong>
     <br />
-    A production pilot used every day by a real operations team. Hebrew RTL, mobile-first.
+    Built for Hebrew-speaking, mobile-first operations teams
   </p>
 
   <br />
@@ -15,28 +15,27 @@
   <img src="https://img.shields.io/badge/Next.js-16-000000?style=for-the-badge&logo=next.js&logoColor=white" />
   <img src="https://img.shields.io/badge/React-19-61DAFB?style=for-the-badge&logo=react&logoColor=black" />
   <img src="https://img.shields.io/badge/TypeScript-strict-3178C6?style=for-the-badge&logo=typescript&logoColor=white" />
-  <img src="https://img.shields.io/badge/PostgreSQL-Supabase-4169E1?style=for-the-badge&logo=postgresql&logoColor=white" />
-  <img src="https://img.shields.io/badge/Vercel-Production-000000?style=for-the-badge&logo=vercel&logoColor=white" />
+  <img src="https://img.shields.io/badge/PostgreSQL-4169E1?style=for-the-badge&logo=postgresql&logoColor=white" />
+  <img src="https://img.shields.io/badge/Vercel-000000?style=for-the-badge&logo=vercel&logoColor=white" />
 
   <br /><br />
 
-  <img src="https://img.shields.io/badge/status-production%20pilot-brightgreen?style=flat-square" />
-  <img src="https://img.shields.io/badge/pentest-7%2F7%20findings%20fixed-success?style=flat-square" />
-  <img src="https://img.shields.io/badge/RBAC-12%20roles%20%C2%B7%2041%20permissions-blueviolet?style=flat-square" />
-  <img src="https://img.shields.io/badge/CI-1%2C100%2B%20unit%20%C2%B7%20600%2B%20integration%20tests-blue?style=flat-square" />
+  <img src="https://img.shields.io/badge/status-pilot-brightgreen?style=flat-square" />
+  <img src="https://img.shields.io/badge/pentest-all%20findings%20fixed-success?style=flat-square" />
+  <img src="https://img.shields.io/badge/language-Hebrew%20RTL-blue?style=flat-square" />
   <img src="https://img.shields.io/badge/source-private-red?style=flat-square" />
 
 </div>
 
 <br />
 
-> **About this repository:** ON-IT runs in a live pilot, so its source code is private. This page documents what I built, with a focus on the security engineering, monitoring and incident-handling work. I'm happy to walk through the code in an interview.
+> **About this repository:** ON-IT's source code is private. This page gives a high-level overview of what I built, with a focus on the security, monitoring and incident-handling work. I'm happy to go into more depth in an interview.
 
 ---
 
 ## 👋 About Me
 
-I'm **Yonatan Nakash**, a cybersecurity student. I designed, built and operate ON-IT end to end: the database schema, the access-control model, the production deployment, the security testing and the fixes that came out of it.
+I'm **Yonatan Nakash**, a cybersecurity student. I designed, built and operate ON-IT end to end, from the data model and access-control design to deployment, security testing and remediation.
 
 I'm looking for roles as a **SOC Analyst (Tier 1)**, **Security Analyst**, **Junior IT / Technical Security** or **Technical Support Engineer**.
 
@@ -46,15 +45,15 @@ I'm looking for roles as a **SOC Analyst (Tier 1)**, **Security Analyst**, **Jun
 
 | Area | What I did in ON-IT |
 |:---|:---|
-| 🚨 **Security monitoring & alerting** | Built detection for brute-force and credential-stuffing attempts. Each threshold crossing is written to the audit log and raises one alert to administrators, with a cap to prevent alert fatigue |
-| 📜 **Log analysis & audit trails** | Designed an audit log with 60+ event types (logins, failed logins, permission denials, role changes, session revocations, config changes), searchable by user, action, entity and date |
+| 🚨 **Security monitoring & alerting** | Built detection for brute-force and credential-stuffing attempts, with alerts to administrators and safeguards against alert fatigue |
+| 📜 **Log analysis & audit trails** | Designed a searchable audit log covering logins, failed logins, permission denials, account and role changes, and configuration changes |
 | 🎫 **Incident handling** | The product is an incident workflow: triage, assignment, acknowledgment deadlines, SLA tracking, escalation and closure |
-| 🔑 **Identity & access management** | 12 roles × 41 permissions, least privilege, data-scope filters enforced in SQL, fail-closed permission resolution |
-| 🐞 **Vulnerability remediation** | Ran a penetration test and a full security audit. Fixed IDOR, a timing side channel, header spoofing, information leakage, HTML injection and formula injection |
-| 🌐 **Web application security** | CSRF protection, nonce-based Content Security Policy, HSTS and security headers, schema validation on every input, hardened cookies |
-| 🔒 **Authentication & sessions** | bcrypt password hashing, hashed session tokens, idle + absolute session limits, session revocation, single-use password-reset tokens |
-| 🛠️ **Technical support & operations** | Running the system in production: releases and rollbacks, user support, troubleshooting email and WhatsApp delivery, kill switches and maintenance mode |
-| 📝 **Security documentation** | Security, access-control, architecture and known-issues documents maintained as project deliverables |
+| 🔑 **Identity & access management** | Role-based access control with least privilege and data-scope isolation between teams |
+| 🐞 **Vulnerability remediation** | Ran a penetration test and a security audit, then fixed and verified every finding |
+| 🌐 **Web application security** | CSRF protection, Content Security Policy, security headers, input validation, hardened cookies |
+| 🔒 **Authentication & sessions** | Password hashing, hashed session tokens, session timeouts and revocation, secure password reset |
+| 🛠️ **Technical support & operations** | Running the system in production: releases and rollbacks, user support, troubleshooting notification delivery |
+| 📝 **Security documentation** | Security, access-control and architecture documentation maintained as project deliverables |
 
 ---
 
@@ -95,41 +94,33 @@ I'm looking for roles as a **SOC Analyst (Tier 1)**, **Security Analyst**, **Jun
 
 ## 🚨 Security Monitoring: Brute-Force Detection
 
-Login attempts pass through a layered rate-limit gate **before** any password check. Limits are tracked per source IP, per account, per IP + account pair, and per trusted device, each with a short burst window and a longer sustained window.
-
 ```mermaid
 flowchart LR
-    A["Login attempt"] --> B{"Rate-limit gate<br/>IP · account · device"}
-    B -- "over limit" --> C["Generic error<br/>no password check"]
-    C --> D["Audit log<br/>security.login_rate_limited"]
-    D --> E["One alert to super admins<br/>per threshold crossing"]
-    B -- "within limit" --> F["bcrypt verify<br/>dummy hash for unknown users"]
-    F -- "wrong password" --> G["Same generic error<br/>audit: user.login_failed"]
-    F -- "success" --> H["New session<br/>only a SHA-256 hash stored"]
+    A["Login attempt"] --> B{"Layered<br/>rate limits"}
+    B -- "over limit" --> C["Generic error"]
+    C --> D["Security event<br/>in audit log"]
+    D --> E["Alert to<br/>administrators"]
+    B -- "within limit" --> F["Password check"]
+    F -- "fail" --> G["Generic error<br/>+ audit event"]
+    F -- "success" --> H["New session"]
 ```
 
-**Design decisions:**
-- **No username enumeration.** Unknown, inactive and wrong-password logins get the same message and the same work (one bcrypt check against a dummy hash), so neither the response nor its timing shows whether an account exists.
-- **Shared NAT friendly.** IP limits count failures only, so many users behind one office IP aren't locked out by each other.
-- **Trusted devices.** A browser that has signed in to an account before is throttled on its own counter, so an attacker can't lock the real user out of their usual device.
-- **Spoof-resistant client IP.** The client IP comes from the hosting platform's header, not the attacker-controlled left-most `X-Forwarded-For` value.
-- **Event-based alerting.** An alert fires once when a threshold is crossed, not on every request. A global hourly cap stops an attack from flooding admins. Suppressed events still go to the audit log.
-- **Fail closed.** If the rate-limit store is unavailable, login is refused.
-- **Pseudonymised keys.** IPs and usernames are hashed before they are used as rate-limit keys.
+- **Layered rate limiting** checked before any password verification
+- **No username enumeration:** every failed login looks the same, whether or not the account exists
+- **Event-based alerting:** one alert per threshold crossing instead of one per request, so admins aren't flooded
+- **Fail closed:** if a security check can't run, the login is refused
 
 ---
 
 ## 🧯 Incident Response Example: Suspected Account Attack
 
-The tools an administrator uses when the brute-force alert fires:
-
-| Phase | What happens in ON-IT |
+| Phase | What the administrator does in ON-IT |
 |:---|:---|
-| **1. Detect** | An in-app security alert reaches the super admins: which scope crossed its threshold (IP, account or device) and when |
-| **2. Triage** | Filter the audit log by `security.login_rate_limited` and `user.login_failed`, by user and time range. Check whether a successful `user.login` followed the failures |
-| **3. Contain** | Revoke all of the account's sessions in one click, reset its password, or deactivate the account |
-| **4. Recover** | The user sets a new password through a single-use, 1-hour reset link sent by email |
-| **5. Review** | Every containment step is itself audited (`session.revoke_all`, `user.password_admin_reset`, `user.deactivate`) with the admin, time and IP |
+| **1. Detect** | Receives an in-app security alert |
+| **2. Triage** | Filters the audit log by event type, user and time range to see what happened |
+| **3. Contain** | Revokes the account's active sessions, resets its password, or deactivates the account |
+| **4. Recover** | The user sets a new password through a secure, time-limited reset link |
+| **5. Review** | Every containment action is itself recorded in the audit log |
 
 ---
 
@@ -140,23 +131,21 @@ The tools an administrator uses when the brute-force alert fires:
     <td width="50%" valign="top">
 
 #### 🔑 Authentication & Sessions
-- Passwords hashed with **bcrypt (12 rounds)**, never stored in plaintext
-- Session token = 32 random bytes. Only its **SHA-256 hash** is stored, so a database leak doesn't give working sessions
-- **Idle and absolute session limits** checked on the server on every request. Privileged admin sessions get shorter limits
-- Sessions can be revoked one at a time or all at once; deactivating a user ends their sessions
-- New users get a random temporary password and must change it on first login
-- Password reset: single-use hashed tokens, 1-hour expiry, rate-limited per IP and per target account
+- Passwords hashed with bcrypt, never stored in plaintext
+- Session tokens stored only as hashes
+- Server-side session timeouts and revocation
+- Temporary password with a forced change on first login
+- Single-use, time-limited password-reset links
 
 </td>
 <td width="50%" valign="top">
 
 #### 🎭 Authorization (Least Privilege)
-- **12 roles in a hierarchy, 41 fine-grained permissions**
-- Permission checked at the entry of every mutating action
-- **Scope filters compiled into SQL `WHERE` clauses**: users only see tickets, people and attendance inside their unit or department
-- Single-row loads use the same scope filter. Out-of-scope and missing rows return the same "not found", so row existence doesn't leak (IDOR prevention)
-- Permission resolution **fails closed**. Refused permission checks are audited as `security.permission_denied`
-- Sensitive admin areas need a permission **and** an email allowlist
+- Hierarchical role-based access control with fine-grained permissions
+- Permission check at the entry of every state-changing action
+- Data-scope filtering enforced in the database queries
+- Protection against IDOR: out-of-scope records can't be read or changed
+- Refused access attempts are logged
 
 </td>
   </tr>
@@ -164,19 +153,18 @@ The tools an administrator uses when the brute-force alert fires:
     <td width="50%" valign="top">
 
 #### 🌐 Web Application Hardening
-- **CSRF** double-submit token with timing-safe comparison on every state-changing action
-- **Nonce-based CSP** with `strict-dynamic` and no `unsafe-inline` scripts, tested with an automated script-injection test
-- HSTS (preload), `X-Frame-Options: DENY`, `nosniff`, strict Referrer-Policy, Permissions-Policy
-- Cookies: `HttpOnly` · `Secure` · `SameSite`
-- **Zod schema validation** with length caps on every user input
+- CSRF protection on every state-changing action
+- Content Security Policy and standard security headers
+- Hardened cookies (`HttpOnly`, `Secure`, `SameSite`)
+- Schema validation on every user input
 
 </td>
 <td width="50%" valign="top">
 
 #### 💉 Injection Defenses
-- **Server-side PDF rendering:** user text is encoded at every output point, JavaScript is disabled in the headless browser, outbound requests go through an allow-list, and a strict meta-CSP blocks the rest
-- **CSV / Excel formula injection:** cells that start with `=`, `+`, `-`, `@` (including full-width and hidden-character variants) are neutralised. A hostile test dataset went from **211 outbound connections to 0**
-- **Phishing relay:** URLs are stripped from stored text before it is re-sent through the official WhatsApp sender
+- Output encoding in server-generated PDF reports
+- Protection against CSV / Excel formula injection in exports
+- Sanitising of user text before it is sent out in notifications
 
 </td>
   </tr>
@@ -184,20 +172,17 @@ The tools an administrator uses when the brute-force alert fires:
     <td width="50%" valign="top">
 
 #### 🔗 Integration Security
-- **Twilio webhooks:** signature validated against a pinned canonical URL. Missing config means the endpoint rejects requests
-- **Job endpoints:** shared secret in the `Authorization` header with a constant-time comparison. Missing secret disables the endpoint
-- Secrets live only in server-side environment variables, validated at startup
-- **Kill switches** for WhatsApp, email, push and background jobs, plus a maintenance mode, all changeable at runtime with a config history
+- Signature validation on incoming webhooks
+- Background job endpoints protected by a secret, compared in constant time
+- Secrets kept only in server-side configuration
 
 </td>
 <td width="50%" valign="top">
 
 #### 📜 Audit & Accountability
-- **60+ audit event types** across auth, security, users, permissions, tickets, attendance, sessions, notifications and settings
-- Each row records who, what, which entity, old and new values, and IP
-- Security-critical changes write their audit row **in the same database transaction**, so a change can't happen without its record
-- The app never deletes or rewrites audit rows. Users referenced in history are deactivated, not deleted
-- Audit viewer restricted to the top two admin roles
+- Audit records for security-relevant and administrative actions
+- Each record captures who, what, when and the change made
+- Audit history is never deleted or rewritten by the app
 
 </td>
   </tr>
@@ -205,27 +190,21 @@ The tools an administrator uses when the brute-force alert fires:
 
 ---
 
-## 🐞 Penetration Test: Findings & Remediation
+## 🐞 Penetration Test & Security Audit
 
-All 7 findings from a penetration test were fixed and verified:
+I ran a penetration test, and later a broader security audit of the system. Every finding was fixed and verified. The finding types, mapped to the OWASP Top 10 (2021):
 
-| # | Finding | OWASP Top 10 (2021) | Fix |
-|:---:|:---|:---|:---|
-| 1 | **IDOR** on ticket actions (assign, status change, escalate, comment and more): any signed-in user could act on tickets outside their scope | A01 Broken Access Control | Scope filter in the `WHERE` clause of every single-row load; generic "not found" on a scope miss |
-| 2 | **Timing side channel** in the job-secret comparison | A02 Cryptographic Failures | Constant-time comparison (`crypto.timingSafeEqual`) that is also safe on length mismatch |
-| 3 | **Stack traces leaked** in report error responses | A05 Security Misconfiguration | Debug details removed from responses, logged on the server only |
-| 4 | **Secret sent in the URL** query string, so it reached access logs | A05 Security Misconfiguration | Moved to the `Authorization: Bearer` header |
-| 5 | **Malicious URLs relayed** through notification retries via the official WhatsApp sender | A03 Injection | URL stripping before re-send, plus length limits on ticket and comment input |
-| 6 | **Rate-limit bypass** by spoofing `X-Forwarded-For` | A07 Identification & Authentication Failures | Client IP taken from the platform-controlled header or the right-most proxy entry |
-| 7 | **Webhook signature replay** through a forged `Host` header | A08 Software & Data Integrity Failures | Signature checked against a canonical URL pinned in configuration |
+| Finding type | OWASP category | How it was fixed |
+|:---|:---|:---|
+| Insecure direct object reference (IDOR) | A01 Broken Access Control | Scope checks enforced on every record lookup |
+| Timing side channel in a secret comparison | A02 Cryptographic Failures | Constant-time comparison |
+| Error details leaked in responses | A05 Security Misconfiguration | Generic errors to the user, details logged on the server only |
+| Secret exposed in a URL | A05 Security Misconfiguration | Moved into a request header |
+| Unsafe content relayed in outgoing messages | A03 Injection | Sanitising and length limits on input |
+| Rate-limit bypass through spoofed headers | A07 Identification & Authentication Failures | Trusted source for the client IP |
+| Webhook signature replay | A08 Software & Data Integrity Failures | Signature checked against a fixed, configured URL |
 
-Later, a **full security audit** of the system covered authentication, authorization, data integrity and operations. Fixes shipped in four release waves, each with a read-only production preflight, signed-in smoke tests after deploy and a ready rollback target. Highlights:
-- Redesigned login protection (the layered gate and alerting described above)
-- Removed the username-enumeration signal from login errors and timing
-- Locked down the server-side PDF renderer against HTML injection and outbound requests
-- Neutralised formula injection in CSV / Excel exports
-- Added auditing of refused permission checks
-- Replaced a fixed 24-hour session with idle + absolute limits after a production issue was found
+The fixes shipped in staged releases, each with pre-release checks, post-deploy smoke tests and a rollback plan.
 
 ---
 
@@ -233,13 +212,13 @@ Later, a **full security audit** of the system covered authentication, authoriza
 
 | Module | Capabilities |
 |:---|:---|
-| 🎫 **Tickets** | Priority-based SLA deadlines · state machine (open → assigned → in progress → resolved → closed) · manual or automatic assignment based on role, facility, attendance and unavailability windows · acknowledgment deadline · bump, defer, escalate · internal and public comments · full event timeline |
-| ⏱️ **Escalation engine** | Finds overdue tickets and unacknowledged assignments and escalates them. Each ticket is claimed atomically, so overlapping runs never escalate twice, and one failing ticket doesn't stop the batch. Runs as secret-protected job endpoints triggered from the operations panel |
-| 👥 **Workforce attendance** | Shift check-in / check-out, daily status, time-range unavailability, planning up to 7 days ahead. Attendance feeds directly into auto-assignment |
-| 🔔 **Notifications** | In-app, Web Push and WhatsApp (Twilio). Delivery status is tracked through signed webhooks. A WhatsApp failure never blocks in-app delivery |
-| 📊 **Reports** | 7 report types plus an overview dashboard, exported to PDF (RTL Hebrew), Excel and CSV. Every report is filtered to the viewer's scope |
-| ⚙️ **Admin & operations** | User management, role assignment, session viewer and revocation, audit log viewer, runtime settings (SLA, acknowledgment timeout), kill switches, maintenance mode, config history, operations dashboard |
-| 📱 **PWA** | Installable mobile app experience, built mobile-first and right-to-left |
+| 🎫 **Tickets** | Priority-based SLA deadlines · full lifecycle from open to closed · manual or automatic assignment based on role and availability · acknowledgment deadline · escalation · comments · event timeline |
+| ⏱️ **Escalation** | Overdue tickets and unacknowledged assignments are escalated, with safeguards against duplicate escalation |
+| 👥 **Workforce attendance** | Shift check-in / check-out, daily status and availability planning, linked to automatic assignment |
+| 🔔 **Notifications** | In-app, push and WhatsApp, with delivery tracking |
+| 📊 **Reports** | Multiple report types exported to PDF (RTL Hebrew), Excel and CSV, filtered to each viewer's access scope |
+| ⚙️ **Admin & operations** | User and role management, session management, audit log viewer, runtime settings, operations dashboard |
+| 📱 **PWA** | Installable mobile experience, built mobile-first and right-to-left |
 
 ---
 
@@ -247,36 +226,21 @@ Later, a **full security audit** of the system covered authentication, authoriza
 
 ```mermaid
 flowchart TD
-    U["Browser / installed PWA<br/>mobile-first, RTL"] --> M["Middleware<br/>session check · CSRF cookie · CSP nonce · security headers"]
+    U["Browser / installed PWA"] --> M["Middleware<br/>session · CSRF · security headers"]
     M --> S["Server Components & Server Actions"]
-    S --> P{"Every mutation<br/>CSRF → permission → input validation<br/>→ scoped DB write → audit log → notify"}
-    P --> DB[("PostgreSQL on Supabase<br/>31 tables · Drizzle ORM")]
-    S --> EXT["External services"]
-    EXT --> T["Twilio WhatsApp<br/>signed webhooks"]
-    EXT --> W["Web Push"]
-    EXT --> E["SMTP<br/>password reset"]
-    EXT --> R["Headless Chromium<br/>PDF reports"]
-    J["Job endpoints<br/>escalation · ACK timeout · cleanup"] -- "secret-protected" --> DB
+    S --> P{"Every change<br/>CSRF → permission → validation<br/>→ database write → audit → notify"}
+    P --> DB[("PostgreSQL")]
+    S --> EXT["Notifications & report rendering"]
 ```
-
-**Engineering highlights:**
-- **Race conditions handled in the database.** Unique partial indexes allow only one active assignment and one pending acknowledgment per ticket.
-- **Distributed rate limiting without Redis.** One atomic PostgreSQL upsert counts a hit against several keys, so every serverless instance shares the same counters.
-- **Transactional audit.** Security-critical changes and their audit rows commit or roll back together.
-- **Guarded database migrations.** Scripts are dry-run by default, and changing production needs an explicit confirmation flag.
 
 ---
 
 ## 🧪 Quality & DevOps
 
-| | |
-|:---|:---|
-| **CI on every pull request** | Type check · lint · documentation-citation check · unit tests · production build · integration tests |
-| **Unit tests** | 1,100+ (Vitest) |
-| **Integration tests** | 600+ against a real PostgreSQL database built from the migration history |
-| **End-to-end tests** | Playwright, including a CSP script-injection test |
-| **Release process** | Read-only production preflight → deploy → public and signed-in smoke tests → documented rollback target |
-| **Documentation** | Security, RBAC, architecture, subsystem, tech-debt and known-issues documents, kept in sync with the code |
+- **Continuous integration** on every pull request: type check, lint, unit tests, integration tests and a production build
+- **Automated tests:** unit, integration (against a real database) and end-to-end (Playwright)
+- **Release process:** pre-release checks, deploy, smoke tests, rollback plan
+- **Documentation** kept in sync with the code
 
 ---
 
@@ -284,43 +248,19 @@ flowchart TD
 
 | Layer | Technology |
 |:---|:---|
-| **Frontend** | Next.js 16 (App Router, Server Components), React 19, React Compiler, Tailwind CSS 4, shadcn/ui |
+| **Frontend** | Next.js 16 (App Router), React 19, Tailwind CSS 4, shadcn/ui |
 | **Language** | TypeScript (strict) |
-| **Backend** | Server Actions, middleware, secret-protected job endpoints |
-| **Database** | PostgreSQL (Supabase), Drizzle ORM |
-| **Security** | bcryptjs, SHA-256 hashed tokens, CSRF double-submit, nonce CSP, Zod 4, DB-backed rate limiting |
-| **Notifications** | Twilio WhatsApp, Web Push (VAPID), Nodemailer |
-| **Reporting** | Puppeteer (PDF), SheetJS (Excel), Recharts |
+| **Database** | PostgreSQL, Drizzle ORM |
+| **Security** | bcrypt, CSRF protection, Content Security Policy, Zod validation, rate limiting |
+| **Notifications** | WhatsApp, Web Push, email |
+| **Reporting** | PDF, Excel, CSV |
 | **Testing** | Vitest, Playwright, GitHub Actions |
 | **Hosting** | Vercel |
 
 ---
 
-## 📊 By the Numbers
-
-| Metric | Value |
-|:---|:---:|
-| Roles / permissions | **12 / 41** |
-| Database tables | **31** |
-| Audit event types | **60+** |
-| Pentest findings fixed | **7 / 7** |
-| Report types | **7** + overview |
-| Notification channels | **3** |
-| Automated tests | **1,700+** |
-
----
-
-## 🗺️ What I'm Working On Next
-
-- **Multi-factor authentication** for administrator accounts
-- **Scheduled escalation runner**, so SLA and acknowledgment escalation run on a timer, not only from the operations panel
-- **Forwarding security events to an external log platform (SIEM)** for alerting outside the app
-- **CSP violation reporting**, so a policy regression in production is visible
-
----
-
 <div align="center">
 
-  > **🔒 The source code is private** because the system runs in a live pilot. Code walkthroughs are available on request.
+  > **🔒 The source code is private.** More detail is available in an interview.
 
 </div>
