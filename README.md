@@ -39,6 +39,9 @@ I'm **Yonatan Nakash**, a cybersecurity student. I designed, built and operate O
 
 I'm looking for roles as a **SOC Analyst (Tier 1)**, **Security Analyst**, **Junior IT / Technical Security** or **Technical Support Engineer**.
 
+<a href="https://www.linkedin.com/in/yonatan-nakash/"><img src="https://img.shields.io/badge/LinkedIn-Yonatan%20Nakash-0A66C2?style=for-the-badge&logo=linkedin&logoColor=white" alt="LinkedIn" /></a>
+<a href="mailto:joniso152468@gmail.com"><img src="https://img.shields.io/badge/Email-joniso152468%40gmail.com-EA4335?style=for-the-badge&logo=gmail&logoColor=white" alt="Email" /></a>
+
 ---
 
 ## 🎯 Skills Demonstrated
@@ -262,5 +265,9 @@ flowchart TD
 <div align="center">
 
   > **🔒 The source code is private.** More detail is available in an interview.
+
+  <br />
+
+  **📬 Contact:** [LinkedIn](https://www.linkedin.com/in/yonatan-nakash/) · [joniso152468@gmail.com](mailto:joniso152468@gmail.com)
 
 </div>
